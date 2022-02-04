@@ -46,7 +46,7 @@ clear
 echo "Copying new files..."
 sleep 1
 cp *.php /var/www/
-cp -r img/ css/ js/ /var/www/
+cp -r img/ css/ js/ includes/ /var/www/
 echo "done"
 
 #exit
