@@ -55,7 +55,7 @@
                 </thead>
                 <tbody>
                     <?php
-                    for ($x = 1; $x < ($poolDrives); $x++) {
+                    for ($x = 1; $x <= ($poolDrives); $x++) {
                         $driveName = shell_exec("cat /tmp/webzfs.txt | grep 'ata-' | tr -d '\t' | cut -d ' ' -f 5 | head -n '$x' | tail -n 1");
                         $nameLength = strlen($driveName);
                         $driveStatus = shell_exec("cat /tmp/webzfs.txt | grep 'ata-' | head -n '$x' | tail -n 1 | tr -d '\t ' | cut -b '$nameLength'- | tr -d '0'");
