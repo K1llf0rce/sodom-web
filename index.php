@@ -6,7 +6,7 @@
     $hostnameVar = shell_exec("echo Hello World");
     $uptimeVar = shell_exec("uptime -p | cut -d ' ' -f 2-6");
     $ipVar = shell_exec("ip a | grep -m 2 -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'");
-    $smbVar = shell_exec("systemctl is-enabled smbd");
+    $smbVar = shell_exec("systemctl is-active smbd");
     $poolVar = shell_exec("cat /tmp/webzfs.txt | grep 'state' | cut -d ' ' -f 3 | tr '[A-Z]' '[a-z]' ");
 ?>
 <html lang="en">
