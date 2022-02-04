@@ -1,0 +1,42 @@
+* {
+    font-family: Open Sans, Sans serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black;
+}
+
+p,a,h1,h2,h3 {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-custom {
+    background-color: #1f1f1f;
+}
+
+#mainContainer {
+    margin: 15px;
+    background-color: #1f1f1f;
+    border-radius: 0px;
+    padding: 15px;
+}
+
+#mainContainer p,h1,h2,h3 {
+    color: white;
+}
+
+#statsDisplay {
+    
+}
+
+#statsDisplay p,h1,h2,h3 {
+    padding: 5px;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+}
