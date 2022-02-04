@@ -1,7 +1,7 @@
 <?php
     #get newest data
-    #shell_exec("cat '' > /tmp/webzfs.txt");
-    #shell_exec("sudo zpool status genesis >> /tmp/webzfs.txt");
+    shell_exec("cat '' > /tmp/webzfs.txt");
+    shell_exec("sudo zpool status genesis >> /tmp/webzfs.txt");
     $poolStatus = shell_exec("cat /tmp/webzfs.txt | grep 'state' | cut -d ' ' -f 3 | tr '[A-Z]' '[a-z]' ");
     $poolName = shell_exec("cat /tmp/webzfs.txt | grep 'pool' | cut -d ':' -f 2 | tr -d ' ' ");
     $poolMirrors = shell_exec("cat /tmp/webzfs.txt | grep -c 'mirror'");
