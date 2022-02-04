@@ -24,13 +24,15 @@
                 </ul>
             </div>
         </nav>
-        <div class="mainContainer">
-            <div id="statsDisplay">
-                <p id="hostnameStatus">Hostname: <?php echo $hostnameVar ?></p>
-                <p id="ipStatus">IP: <?php echo $ipVar ?></p>
-                <p id="uptimeStatus">Uptime: <?php echo $uptimeVar ?></p>
-                <p id="smbStatus">SMB-Status: <?php echo $smbVar ?></p>
-                <p id="poolStatus">Pool-Status: <?php echo $poolVar ?></p>
+        <div id="contentWrapper">
+            <div class="mainContainer">
+                <div id="statsDisplay">
+                    <p id="hostnameStatus">Hostname: <span id="floater"><?php echo $hostnameVar ?></span></p>
+                    <p id="ipStatus">IP: <span id="floater"><?php echo $ipVar ?></span></p>
+                    <p id="uptimeStatus">Uptime: <span id="floater"><?php echo $uptimeVar ?></span></p>
+                    <p id="smbStatus">SMB-Status: <span id="floater"><?php echo $smbVar ?></span></p>
+                    <p id="poolStatus">Pool-Status: <span id="floater"><?php echo $poolVar ?></span></p>
+                </div>
             </div>
         </div>
         <script src="js/main.js"></script>

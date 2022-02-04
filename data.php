@@ -23,32 +23,35 @@
                 </ul>
             </div>
         </nav>
-        <div class="mainContainer">
-            <p>Pool-Status: <?php echo $poolStatus ?></p>
-            <p>Name: <?php echo $poolName ?></p>
-            <p>Mirrors: <?php echo $poolMirrors ?></p>
-            <p>Drives: <?php echo $poolDrives ?></p>
-        </div>
-        <div class="mainContainer">
-            <table id="driveTable" class="table table-bordered table-dark">
-                <thead>
-                    <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">State</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    for ($x = 1; $x <= ($poolDrives); $x++) {
-                        $driveName = shell_exec("cat /tmp/webzfs.txt | grep 'ata-' | tr -d '\t' | cut -d ' ' -f 5 | head -n '$x' | tail -n 1");
-                        $nameLength = strlen($driveName);
-                        $driveStatus = shell_exec("cat /tmp/webzfs.txt | grep 'ata-' | head -n '$x' | tail -n 1 | tr -d '\t ' | cut -b '$nameLength'- | tr -d '0'");
-                        echo '<tr><th>'.$x.'</th><td>'.$driveName.'</td><td>'.$driveStatus.'</td></tr>';
-                    }
-                    ?>
-                </tbody>
-            </table>
+        <div id="contentWrapper">
+            <div class="mainContainer">
+                <div id="poolstatDisplay">
+                    <p>Pool-Name: <span id="floater"><?php echo $poolName ?></span></p>
+                    <p>Pool-Status: <span id="floater"><?php echo $poolStatus ?></span></p>
+                    <p>Drives: <span id="floater"><?php echo $poolDrives ?></span></p>
+                </div>
+            </div>
+            <div class="mainContainer">
+                <table id="driveTable" class="table table-bordered table-dark table-responsive-sm">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">State</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        for ($x = 1; $x <= ($poolDrives); $x++) {
+                            $driveName = shell_exec("cat /tmp/webzfs.txt | grep 'ata-' | tr -d '\t' | cut -d ' ' -f 5 | head -n '$x' | tail -n 1");
+                            $nameLength = strlen($driveName);
+                            $driveStatus = shell_exec("cat /tmp/webzfs.txt | grep 'ata-' | head -n '$x' | tail -n 1 | tr -d '\t ' | cut -b '$nameLength'- | tr -d '0'");
+                            echo '<tr><th>'.$x.'</th><td>'.$driveName.'</td><td>'.$driveStatus.'</td></tr>';
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <script src="js/main.js"></script>
         <?php

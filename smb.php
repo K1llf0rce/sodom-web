@@ -15,7 +15,9 @@
                 </ul>
             </div>
         </nav>
-        <div class="mainContainer">
+        <div id="contentWrapper">
+            <div class="mainContainer">
+            </div>
         </div>
         <script src="js/main.js"></script>
         <?php
