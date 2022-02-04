@@ -1,4 +1,7 @@
 <?php
+    #get newest data
+    #shell_exec("cat '' > /tmp/webzfs.txt");
+    #shell_exec("sudo zpool status genesis >> /tmp/webzfs.txt");
     $poolStatus = shell_exec("cat /tmp/webzfs.txt | grep 'state' | cut -d ' ' -f 3 | tr '[A-Z]' '[a-z]' ");
     $poolName = shell_exec("cat /tmp/webzfs.txt | grep 'pool' | cut -d ':' -f 2 | tr -d ' ' ");
     $poolMirrors = shell_exec("cat /tmp/webzfs.txt | grep -c 'mirror'");
@@ -51,9 +54,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php 
-                    for ($x = 1; $x < $poolDrives+1; $x++) {
-                        $driveName = shell_exec("cat /tmp/webzfs.txt | grep 'ata-' | tr -d '\t' | cut -d ' ' -f 4 | head -n '$x' | tail -n 1");
+                    <?php
+                    for ($x = 1; $x < ($poolDrives); $x++) {
+                        $driveName = shell_exec("cat /tmp/webzfs.txt | grep 'ata-' | tr -d '\t' | cut -d ' ' -f 5 | head -n '$x' | tail -n 1");
                         $nameLength = strlen($driveName);
                         $driveStatus = shell_exec("cat /tmp/webzfs.txt | grep 'ata-' | head -n '$x' | tail -n 1 | tr -d '\t ' | cut -b '$nameLength'- | tr -d '0'");
                         echo '<tr><th scope="row">'.$x.'</th><td>'.$driveName.'</td><td>'.$driveStatus.'</td></tr>';
