@@ -1,10 +1,6 @@
 <?php
     include_once "includes/header.php";
-    $poolStatus = shell_exec("cat /tmp/webzfs.txt | grep 'state' | cut -d ' ' -f 3 | tr '[A-Z]' '[a-z]' ");
-    $poolName = shell_exec("cat /tmp/webzfs.txt | grep 'pool' | cut -d ':' -f 2 | tr -d ' ' ");
-    $poolMirrors = shell_exec("cat /tmp/webzfs.txt | grep -c 'mirror'");
-    $poolDrives = shell_exec("cat /tmp/webzfs.txt | grep -c 'ata-'");
-    $zfsPool = shell_exec("cat /tmp/webzfs.txt | grep -m 1 'ata-' | tr '\t' '\r' | cut -d ' ' -f 4");
+    include_once "includes/mainData.php";
 ?>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
@@ -26,6 +22,9 @@
                     <p>Pool-Name: <span id="floater"><?php echo $poolName ?></span></p>
                     <p>Pool-Status: <span id="floater"><?php echo $poolStatus ?></span></p>
                     <p>Drives: <span id="floater"><?php echo $poolDrives ?></span></p>
+                    <p id="poolSpaceAll">Pool-Space: <span id="floater"><?php echo "$fullSpace$spaceDataUnit" ?></span></p>
+                    <p id="poolSpaceUsed">Used: <span id="floater"><?php echo "$usedSpace$spaceDataUnit" ?></span></p>
+                    <p id="poolSpaceFree">Free: <span id="floater"><?php echo "$freeSpace$spaceDataUnit" ?></span></p>
                 </div>
             </div>
             <div class="mainContainer">

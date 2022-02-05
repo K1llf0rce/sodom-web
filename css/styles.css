@@ -89,6 +89,19 @@ p,a,h1,h2,h3 {
     font-style: italic;
 }
 
+.chartContainer {
+    height: auto;
+    max-width: 40em;
+    width: 80%;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+#spaceChartHeading {
+    text-align: center;
+    font-size: 25px;
+}
+
 @media only screen and (min-width: 100em) {
     #contentWrapper {
         width: 80em;

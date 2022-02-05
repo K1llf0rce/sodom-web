@@ -9,9 +9,7 @@ Whatever
 
 // functions
 
-/*
-Whatever
-*/
+
 
 // main
 
