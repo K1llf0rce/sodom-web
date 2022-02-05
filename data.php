@@ -1,6 +1,9 @@
 <?php
+    #cache newest data
+    shell_exec("cat '' > /tmp/webzfs.txt");
+    shell_exec("/sbin/zpool status >> /tmp/webzfs.txt");
     include_once "includes/header.php";
-    include_once "includes/mainData.php";
+    include_once "includes/zfsData.php";
 ?>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
@@ -18,16 +21,16 @@
         </nav>
         <div id="contentWrapper">
             <div class="mainContainer">
+                <h1 class="containerHeading">ZFS Status:</h1>
                 <div id="poolstatDisplay">
                     <p>Pool-Name: <span id="floater"><?php echo $poolName ?></span></p>
                     <p>Pool-Status: <span id="floater"><?php echo $poolStatus ?></span></p>
-                    <p>Drives: <span id="floater"><?php echo $poolDrives ?></span></p>
-                    <p id="poolSpaceAll">Pool-Space: <span id="floater"><?php echo "$fullSpace$spaceDataUnit" ?></span></p>
-                    <p id="poolSpaceUsed">Used: <span id="floater"><?php echo "$usedSpace$spaceDataUnit" ?></span></p>
-                    <p id="poolSpaceFree">Free: <span id="floater"><?php echo "$freeSpace$spaceDataUnit" ?></span></p>
+                    <p>SATA-Drives: <span id="floater"><?php echo $poolDrives ?></span></p>
                 </div>
             </div>
             <div class="mainContainer">
+            <h1 class="containerHeading">Drives:</h1>
+                <div class="tableContainer">
                 <table id="driveTable" class="table table-bordered table-dark table-responsive-sm">
                     <thead>
                         <tr>
@@ -47,8 +50,47 @@
                         ?>
                     </tbody>
                 </table>
+                </div>
+            </div>
+            <div class="mainContainer">
+                <h1 class="containerHeading">Space Allocation:</h1>
+                <div class="chartContainer">
+                    <canvas id="spaceChart"></canvas>
+                </div>
+                <p id="poolSpaceAll">Pool-Space: <span id="floater"><?php echo "$fullSpace$spaceDataUnit" ?></span></p>
+                    <p id="poolSpaceUsed">Used: <span id="floater"><?php echo "$usedSpace$spaceDataUnit" ?></span></p>
+                    <p id="poolSpaceFree">Free: <span id="floater"><?php echo "$freeSpace$spaceDataUnit" ?></span></p>
             </div>
         </div>
+        <script>
+            new Chart("spaceChart", {
+            type: "pie",
+            data: {
+                labels: ["Free", "Used"],
+                datasets: [{
+                backgroundColor: ["#cfcfcf", "#4f4f4f"],
+                data: [
+                    <?php echo $freeSpace ?>,
+                    <?php echo $usedSpace ?>
+                ]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: {
+                            color: "#ffffff",
+                            boxWidth: 20,
+                            boxHeight: 20
+                        }
+                    },
+                }
+            }
+            });
+        </script>
         <script src="js/main.js"></script>
         <?php
             include_once "includes/footer.php";
