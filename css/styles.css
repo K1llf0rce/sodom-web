@@ -102,10 +102,9 @@ p,a,h1,h2,h3 {
 
 .chartContainer {
     height: auto;
-    max-width: 30em;
+    max-width: 25em;
     width: 80%;
-    margin: 0 auto;
-    padding: 15px;
+    margin: 15px auto;
 }
 
 .containerHeading {

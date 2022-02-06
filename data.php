@@ -79,13 +79,7 @@
                 responsive: true,
                 plugins: {
                     legend: {
-                        display: true,
-                        position: 'bottom',
-                        labels: {
-                            color: "#ffffff",
-                            boxWidth: 20,
-                            boxHeight: 20
-                        }
+                        display: false,
                     },
                 }
             }

@@ -33,11 +33,11 @@
                     <table id="driveTable" class="table table-bordered table-dark table-responsive-sm">
                         <thead>
                             <tr>
-                            <th scope="col">PID</th>
                             <th scope="col">User</th>
                             <th scope="col">Group</th>
+                            <th scope="col">PID</th>
                             <th scope="col">Machine</th>
-                            <th scope="col">Version</th>
+                            <th scope="col">Protocol</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -47,8 +47,8 @@
                                     $clientUser = shell_exec("cat /tmp/websmb.txt | tr -s ' ' | cat /tmp/websmb.txt | tr -s ' ' | head -n '$x' | tail -n 1 | cut -d ' ' -f 2");
                                     $clientGroup = shell_exec("cat /tmp/websmb.txt | tr -s ' ' | cat /tmp/websmb.txt | tr -s ' ' | head -n '$x' | tail -n 1 | cut -d ' ' -f 3");
                                     $clientMachine = shell_exec("cat /tmp/websmb.txt | tr -s ' ' | cat /tmp/websmb.txt | tr -s ' ' | head -n '$x' | tail -n 1 | cut -d ' ' -f 4");
-                                    $clientVersion = shell_exec("cat /tmp/websmb.txt | tr -s ' ' | cat /tmp/websmb.txt | tr -s ' ' | head -n '$x' | tail -n 1 | cut -d ' ' -f 6");
-                                    echo '<tr><th>'.$clientPID.'</th><td>'.$clientUser.'</td><td>'.$clientGroup.'</td><td>'.$clientMachine.'</td><td>'.$clientVersion.'</td></tr>';
+                                    $clientProtocol = shell_exec("cat /tmp/websmb.txt | tr -s ' ' | cat /tmp/websmb.txt | tr -s ' ' | head -n '$x' | tail -n 1 | cut -d ' ' -f 6");
+                                    echo '<tr><th>'.$clientUser.'</th><td>'.$clientGroup.'</td><td>'.$clientPID.'</td><td>'.$clientMachine.'</td><td>'.$clientProtocol.'</td></tr>';
                                 }
                             ?>
                         </tbody>
