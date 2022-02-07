@@ -13,4 +13,13 @@
     $poolMirrors = shell_exec("cat /tmp/webzfs.txt | grep -c 'mirror'");
     $poolDrives = shell_exec("cat /tmp/webzfs.txt | grep -c 'ata-'");
     $zfsPool = shell_exec("cat /tmp/webzfs.txt | grep -m 1 'ata-' | tr '\t' '\r' | cut -d ' ' -f 4");
+
+    function listDrives($numOfDrives) {
+        for ($x = 1; ($x) <= ($numOfDrives); $x++) {
+            $driveName = shell_exec("cat /tmp/webzfs.txt | grep 'ata-' | tr -d '\t' | cut -d ' ' -f 5 | head -n '$x' | tail -n 1");
+            $nameLength = strlen($driveName);
+            $driveStatus = shell_exec("cat /tmp/webzfs.txt | grep 'ata-' | head -n '$x' | tail -n 1 | tr -d '\t ' | cut -b '$nameLength'- | tr -d '0'");
+            echo '<tr><th>'.$x.'</th><td>'.$driveName.'</td><td>'.$driveStatus.'</td></tr>';
+        }
+    }
 ?>
