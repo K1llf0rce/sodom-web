@@ -1,7 +1,4 @@
 <?php
-    #cache newest data
-    shell_exec("cat '' > /tmp/websmb.txt");
-    shell_exec("sudo sudo smbstatus >> /tmp/websmb.txt");
     include_once "includes/header.php";
     include_once "includes/smbData.php";
 ?>
@@ -30,25 +27,59 @@
             <div class="mainContainer">
                 <h1 class="containerHeading">Clients:</h1>
                 <div class="tableContainer">
-                    <table id="driveTable" class="table table-bordered table-dark table-responsive-sm">
+                    <table id="smbClientTable" class="table table-bordered table-dark table-responsive-sm">
                         <thead>
                             <tr>
                             <th scope="col">User</th>
                             <th scope="col">Group</th>
                             <th scope="col">PID</th>
-                            <th scope="col">Machine</th>
+                            <th scope="col">IP</th>
                             <th scope="col">Protocol</th>
+                            <th scope="col">Encryption</th>
+                            <th scope="col">Signing</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                                 for ($x = $clientStart; $x < $clientEnd; $x++) {
-                                    $clientPID = shell_exec("cat /tmp/websmb.txt | tr -s ' ' | cat /tmp/websmb.txt | tr -s ' ' | head -n '$x' | tail -n 1 | cut -d ' ' -f 1");
-                                    $clientUser = shell_exec("cat /tmp/websmb.txt | tr -s ' ' | cat /tmp/websmb.txt | tr -s ' ' | head -n '$x' | tail -n 1 | cut -d ' ' -f 2");
-                                    $clientGroup = shell_exec("cat /tmp/websmb.txt | tr -s ' ' | cat /tmp/websmb.txt | tr -s ' ' | head -n '$x' | tail -n 1 | cut -d ' ' -f 3");
-                                    $clientMachine = shell_exec("cat /tmp/websmb.txt | tr -s ' ' | cat /tmp/websmb.txt | tr -s ' ' | head -n '$x' | tail -n 1 | cut -d ' ' -f 4");
-                                    $clientProtocol = shell_exec("cat /tmp/websmb.txt | tr -s ' ' | cat /tmp/websmb.txt | tr -s ' ' | head -n '$x' | tail -n 1 | cut -d ' ' -f 6");
-                                    echo '<tr><th>'.$clientUser.'</th><td>'.$clientGroup.'</td><td>'.$clientPID.'</td><td>'.$clientMachine.'</td><td>'.$clientProtocol.'</td></tr>';
+                                    $clientPID = shell_exec("cat /tmp/websmb.txt | head -n '$x' | tail -n 1 | cut -d ' ' -f 1");
+                                    $clientUser = shell_exec("cat /tmp/websmb.txt | head -n '$x' | tail -n 1 | cut -d ' ' -f 2");
+                                    $clientGroup = shell_exec("cat /tmp/websmb.txt | head -n '$x' | tail -n 1 | cut -d ' ' -f 3");
+                                    $clientMachine = shell_exec("cat /tmp/websmb.txt | head -n '$x' | tail -n 1 | cut -d ' ' -f 4");
+                                    $clientProtocol = shell_exec("cat /tmp/websmb.txt | head -n '$x' | tail -n 1 | cut -d ' ' -f 6");
+                                    $clientEncrypt = shell_exec("cat /tmp/websmb.txt | head -n '$x' | tail -n 1 | cut -d ' ' -f 7");
+                                    $clientSign = shell_exec("cat /tmp/websmb.txt | head -n '$x' | tail -n 1 | cut -d ' ' -f 8");
+                                    echo '<tr><th>'.$clientUser.'</th><td>'.$clientGroup.'</td><td>'.$clientPID.'</td><td>'.$clientMachine.'</td><td>'.$clientProtocol.'</td><td>'.$clientEncrypt.'</td><td>'.$clientSign.'</td></tr>';
+                                }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="mainContainer">
+                <h1 class="containerHeading">Shares/Services:</h1>
+                <div class="tableContainer">
+                    <table id="smbSharesTable" class="table table-bordered table-dark table-responsive-sm">
+                        <thead>
+                            <tr>
+                            <th scope="col">IP</th>
+                            <th scope="col">PID</th>
+                            <th scope="col">Share/Service</th>
+                            <th scope="col">Time of Connection</th>
+                            <th scope="col">Encryption</th>
+                            <th scope="col">Signing</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                for ($x = $shareStart; $x < $shareEnd; $x++) {
+                                    $shareMachine = shell_exec("cat /tmp/websmb.txt | head -n '$x' | tail -n 1 | cut -d ' ' -f 3");
+                                    $sharePID = shell_exec("cat /tmp/websmb.txt | head -n '$x' | tail -n 1 | cut -d ' ' -f 2");
+                                    $shareService = shell_exec("cat /tmp/websmb.txt | head -n '$x' | tail -n 1 | cut -d ' ' -f 1");
+                                    $shareTimeOfCon = shell_exec("cat /tmp/websmb.txt | head -n '$x' | tail -n 1 | cut -d ' ' -f 4-10");
+                                    $shareEncrypt = shell_exec("cat /tmp/websmb.txt | head -n '$x' | tail -n 1 | cut -d ' ' -f 11");
+                                    $shareSign = shell_exec("cat /tmp/websmb.txt | head -n '$x' | tail -n 1 | cut -d ' ' -f 12");
+                                    echo '<tr><th>'.$shareMachine.'</th><td>'.$sharePID.'</td><td>'.$shareService.'</td><td>'.$shareTimeOfCon.'</td><td>'.$shareEncrypt.'</td><td>'.$shareSign.'</td></tr>';
                                 }
                             ?>
                         </tbody>

@@ -12,13 +12,13 @@
         <link rel="shortcut icon" href="img/harddrive.png" type="image/x-icon">
         <link rel="icon" href="img/harddrive.png" sizes="32x32" type="image/png">
         <link rel="icon" href="img/harddrive.png" sizes="16x16" type="image/png">
-        <title>Sodom-Web</title>
+        <title>sodom-web</title>
     </head>
     <body>
         <nav class="navbar navbar-custom navbar-expand-lg navbar-dark">
             <a class="navbar-brand" href="/index.html">
                 <img src="img/harddrive.png" width="30" height="30" class="d-inline-block align-top" alt="">
-                Sodom-Web
+                sodom-web
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

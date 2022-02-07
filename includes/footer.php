@@ -1,3 +1,3 @@
 <footer class="footer-custom">
-    <p>Sodom-Web v0.1.0</p>
+    <p>sodom-web v1.0.0</p>
 </footer>

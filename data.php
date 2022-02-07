@@ -1,7 +1,4 @@
 <?php
-    #cache newest data
-    shell_exec("cat '' > /tmp/webzfs.txt");
-    shell_exec("/sbin/zpool status >> /tmp/webzfs.txt");
     include_once "includes/header.php";
     include_once "includes/zfsData.php";
 ?>

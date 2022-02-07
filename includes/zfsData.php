@@ -1,4 +1,8 @@
-<?php 
+<?php
+    #cache newest data
+    shell_exec("echo '' > /tmp/webzfs.txt");
+    shell_exec("date +%H:%M:%S >> /tmp/websmb.txt");
+    shell_exec("/sbin/zpool status >> /tmp/webzfs.txt");
     $poolVar = shell_exec("cat /tmp/webzfs.txt | grep 'state' | cut -d ' ' -f 3 | tr '[A-Z]' '[a-z]' ");
     $poolName = shell_exec("cat /tmp/webzfs.txt | grep 'pool' | cut -d ':' -f 2 | tr -d '\r\n ' ");
     $fullSpace = shell_exec("df -H /'$poolName'/ | tail -n 1 | tr -s ' ' | cut -d ' ' -f 2 | tr -d 'G,T,M' ");

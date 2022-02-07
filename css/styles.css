@@ -26,6 +26,7 @@ p,a,h1,h2,h3 {
     width: 100%;
     margin: 0 auto;
     flex: 1;
+    max-width: 90em;
 }
 
 .navbar-custom {
@@ -44,10 +45,6 @@ p,a,h1,h2,h3 {
 
 .mainContainer p,h1,h2,h3 {
     color: white;
-    padding: 5px;
-}
-
-#statsDisplay p,h1,h2,h3 {
     padding: 5px;
 }
 
@@ -73,28 +70,6 @@ p,a,h1,h2,h3 {
     color: white;
 }
 
-#driveTable {
-    background-color: #1f1f1f;
-    border-color: #1f1f1f;
-    color: white;
-    margin: 0;
-    padding: 0;
-}
-
-#driveTable td,tr,th,thead,tbody {
-    border-color: #afafaf !important;
-    border-width: 1px !important;
-}
-
-#poolstatDisplay p,h1,h2,h3 {
-    padding: 5px;
-}
-
-#floater {
-    float: right;
-    font-style: italic;
-}
-
 .tableContainer {
     margin: 0;
     padding: 15px;
@@ -112,8 +87,28 @@ p,a,h1,h2,h3 {
     font-size: 25px;
 }
 
-@media only screen and (min-width: 100em) {
-    #contentWrapper {
-        width: 80em;
-    }
+#statsDisplay p,h1,h2,h3 {
+    padding: 5px;
+}
+
+#driveTable, #smbClientTable, #smbSharesTable {
+    background-color: #1f1f1f;
+    border-color: #1f1f1f;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+#driveTable td,tr,th,thead,tbody, #smbClientTable td,tr,th,thead,tbody, #smbSharesTable td,tr,th,thead,tbody {
+    border-color: #afafaf !important;
+    border-width: 1px !important;
+}
+
+#poolstatDisplay p,h1,h2,h3 {
+    padding: 5px;
+}
+
+#floater {
+    float: right;
+    font-style: italic;
 }
