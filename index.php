@@ -12,7 +12,7 @@
                     <a class="nav-link" href="/data.php">Pool</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/smb.php">SMB</a>
+                    <a class="nav-link disabled" href="#">SMB</a>
                 </li>
                 </ul>
             </div>

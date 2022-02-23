@@ -1,8 +1,8 @@
 <?php
     #cache newest data
-    shell_exec("echo '' > /tmp/websmb.txt");
-    shell_exec("date +%H:%M:%S >> /tmp/websmb.txt");
-    shell_exec("sudo smbstatus | tr -s ' ' >> /tmp/websmb.txt");
+    #shell_exec("echo '' > /tmp/websmb.txt");
+    #shell_exec("date +%H:%M:%S >> /tmp/websmb.txt");
+    #shell_exec("smbstatus | tr -s ' ' >> /tmp/websmb.txt");
     $smbVar = shell_exec("systemctl is-active smbd");
     $smbVersion = shell_exec("cat /tmp/websmb.txt | grep 'version' | cut -d ' ' -f 3");
     $clientStart = shell_exec("cat /tmp/websmb.txt | grep -m 1 -n '\-\-\-\-' | cut -d ':' -f 1");
