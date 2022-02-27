@@ -38,7 +38,7 @@
                     </thead>
                     <tbody>
                         <?php
-                            listDrives(intval($poolDrives));
+                            listDrives(intval($poolDrives), $filePath);
                         ?>
                     </tbody>
                 </table>

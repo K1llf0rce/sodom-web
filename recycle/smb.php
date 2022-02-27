@@ -41,7 +41,7 @@
                         </thead>
                         <tbody>
                             <?php
-                                listClients($clientStart, $clientEnd);
+                                listClients($clientStart, $clientEnd, $filePath);
                             ?>
                         </tbody>
                     </table>
@@ -63,7 +63,7 @@
                         </thead>
                         <tbody>
                             <?php
-                                listShares($shareStart, $shareEnd);
+                                listShares($shareStart, $shareEnd, $filePath);
                             ?>
                         </tbody>
                     </table>
